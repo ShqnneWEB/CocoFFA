@@ -1,0 +1,75 @@
+title: "&8          ʀᴇᴡᴀʀᴅѕ ᴇᴅɪᴛᴏʀ"
+rows: 6
+
+open-sound: UI_BUTTON_CLICK
+
+command-area:
+  start-slot: 0
+  end-slot: 44
+
+items:
+  add-command:
+    slot: 49
+    material: EMERALD
+    name: "&#00FF1CAdd Command"
+    lore:
+      - " "
+      - "&fClick to add a new reward command"
+      - "&fthat will be executed when a player wins."
+      - " "
+      - "&fUse &#00F7DD%player% &ffor the winner's name"
+      - " "
+      - "&eLeft-Click &6» &fAdd command"
+
+  previous-page:
+    slot: 46
+    material: ARROW
+    name: "&#FCFF00Previous Page"
+    lore:
+      - " "
+      - "&fClick to go to the previous page"
+      - ""
+      - "&eLeft-Click &6» &fPrevoius Page"
+
+  next-page:
+    slot: 52
+    material: ARROW
+    name: "&#FCFF00Next Page"
+    lore:
+      - " "
+      - "&fClick to go to the next page"
+      - ""
+      - "&eLeft-Click &6» &fNext Page"
+
+  back:
+    slot: 48
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ=="
+    name: "&#FF0000Back"
+    lore:
+      - " "
+      - "&fReturn to main editor"
+      - " "
+      - "&eLeft-Click &6» &fBack"
+
+command-item:
+  material: PAPER
+  name: "&#00F7DD/{command}"
+  lore:
+    - " "
+    - "&fCommand: &#00F7DD/{command}"
+    - " "
+    - "&eLeft-Click &6» &fRemove"
+
+filler:
+  material: "GRAY_STAINED_GLASS_PANE"
+  name: "&7"
+  lore: []
+  filler-slots:
+    - 45
+    - 47
+    - 49
+    - 51
+    - 53
+
+# do not change
+gui-version: 1

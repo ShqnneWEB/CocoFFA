@@ -1,0 +1,89 @@
+# Basic arena settings
+displayName: default
+
+# Reward settings
+rewards:
+  commands: []
+
+# Location settings
+startLocation: ''
+exitLocation: ''
+borderCenter: ''
+
+# Starter item configuration
+starter:
+  enabled: true
+  material: BLAZE_POWDER
+  glow: true
+  name: "&#00F7DD{arena_name} &fFFA Starter"
+  lore:
+    - " "
+    - "&fStarts an arena that anyone can join!"
+    - " "
+    - "&eRight-Click &6» &fStart Arena"
+
+# Countdown settings
+countdown:
+  actionbar:
+    enabled: true
+    message: "%prefix% &#00F7DD{start_seconds} &fseconds until &#00F7DD{arena_name} &fstarts!"
+  bossbar:
+    enabled: true
+    color: BLUE # BLUE, GREEN, PINK, PURPLE, RED, WHITE, YELLOW
+    style: SOLID # SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+    title: "%prefix% &#00F7DD{start_seconds} &fseconds until &#00F7DD{arena_name} &fstarts!"
+
+# Scoreboard settings
+scoreboard:
+  enabled: true # Turn scoreboard on or off
+  title: "&#00F7DD{arena_name} &fFFA" # Scoreboard title (supports placeholders: {arena_name})
+  lines: # Scoreboard content lines (supports placeholders and custom text)
+    - ""
+    - "&#00F7DDInformation:"
+    - "&fKills: &#00F7DD{kills}"
+    - "&fPlayers left: &#00F7DD{alive_players}"
+    - ""
+    - "#00F7DDEvent:"
+    - "&fArena: #00F7DD{arena_name}"
+    - ""
+    - "&#00F7DDdc.cocostudios.net"
+
+# In-game ActionBar (shown during active gameplay)
+ingame-actionbar:
+  enabled: true # Whether to show actionbar during gameplay
+  message: "&fAlive: &#00F7DD{alive_players} &8&l| &fKills: &#00F7DD{kills}" # Message (supports placeholders: {alive_players}, {kills})
+
+# Automatic effects system
+effects:
+  # Default effects given to all players when joining
+  defaults:
+    - SPEED;1;1
+    - REGENERATION;1;1
+
+  # Timed effect phases (applied after game starts)
+  '1':
+    start: 180 # Start time in seconds after game begins
+    effects:
+      - SPEED;2;1
+      - REGENERATION;2;1
+
+  '2':
+    start: 300
+    effects:
+      - SPEED;3;1
+      - STRENGTH;1;1
+
+# World border system
+border:
+  default: 100 # Default border size when arena is not active
+
+  # Timed border phases (applied after game starts)
+  '1':
+    start: 180 # Start time in seconds after game begins
+    size: 80 # New border size
+    seconds: 5 # Time to shrink to new size
+
+  '2':
+    start: 300
+    size: 50
+    seconds: 10

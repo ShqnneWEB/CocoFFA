@@ -1,0 +1,156 @@
+title: "&8             ꜰꜰᴀ ᴇᴅɪᴛᴏʀ"
+rows: 6
+
+open-sound: "BLOCK_CHEST_OPEN"
+
+items:
+  display-name-editor:
+    slot: 10
+    material: NAME_TAG
+    name: "&#00F7DDDisplay Name Editor"
+    lore:
+      - " "
+      - "&fCurrent value:"
+      - "&#00F7DD{display_name}"
+      - " "
+      - "&eLeft-Click &6» &fEdit"
+
+  kit-editor:
+    slot: 12
+    material: DIAMOND_SWORD
+    name: "&#00F7DDKit Editor"
+    lore:
+      - " "
+      - "&fEdit the arena kit"
+      - " "
+      - "&eLeft-Click &6» &fOpen Editor"
+
+  join-location:
+    slot: 14
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmRhYjE5MzdjNDZkNTNiMCJ9fX0="
+    name: "&#00F7DDJoin Location"
+    lore:
+      - " "
+      - "&fCurrent value:"
+      - "&fWorld: &#00F7DD{join_world}"
+      - "&fX: &#00F7DD{join_x}"
+      - "&fY: &#00F7DD{join_y}"
+      - "&fZ: &#00F7DD{join_z}"
+      - " "
+      - "&eLeft-Click &6» &fEdit"
+
+  exit-location:
+    slot: 16
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDMxNzBkNjJlYjEwMjYzYzE0YWFmYTlkNTE1YjdmYTAyNWNhYzQzYTc1NGJkOWYyYzFiNzk4NGE4M2JlMmE5OSJ9fX0="
+    name: "&#00F7DDExit Location"
+    lore:
+      - " "
+      - "&fCurrent value:"
+      - "&fWorld: &#00F7DD{exit_world}"
+      - "&fX: &#00F7DD{exit_x}"
+      - "&fY: &#00F7DD{exit_y}"
+      - "&fZ: &#00F7DD{exit_z}"
+      - " "
+      - "&eLeft-Click &6» &fEdit"
+
+  border-center:
+    slot: 28
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTA5OTQ0YzgzMjEyZTMwNzE4YjFkZGE0NDJjMTdhYTFkN2E3OWQzYzlkNGEzNWRkZDhlYWQ5NThjN2E3ZjUxOSJ9fX0="
+    name: "&#00F7DDBorder Center"
+    lore:
+      - " "
+      - "&fCurrent value:"
+      - "&fWorld: &#00F7DD{border_world}"
+      - "&fX: &#00F7DD{border_x}"
+      - "&fY: &#00F7DD{border_y}"
+      - "&fZ: &#00F7DD{border_z}"
+      - " "
+      - "&eLeft-Click &6» &fEdit"
+
+  scoreboard-editor:
+    slot: 30
+    material: BOOK
+    name: "&#00F7DDScoreboard Editor"
+    lore:
+      - " "
+      - "&fEdit scoreboard settings"
+      - " "
+      - "&eLeft-Click &6» &fOpen Editor"
+
+  reward-editor:
+    slot: 32
+    material: GOLD_INGOT
+    name: "&#00F7DDReward Editor"
+    lore:
+      - " "
+      - "&fEdit reward commands"
+      - " "
+      - "&eLeft-Click &6» &fOpen Editor"
+
+  delete-arena:
+    slot: 34
+    material: BARRIER
+    name: "&#FF0000Delete Arena"
+    lore:
+      - " "
+      - " &fThis is not reversible!"
+      - " "
+      - "&eShift + Right-Click &6» &fDelete Arena"
+
+  exit:
+    slot: 49
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ=="
+    name: "&#FF0000Exit"
+    lore:
+      - " "
+      - "&fClick to close this menu"
+      - " "
+      - "&eLeft-Click &6» &fExit"
+
+filler:
+  material: "GRAY_STAINED_GLASS_PANE"
+  name: "&7"
+  lore: []
+  filler-slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 50
+    - 51
+    - 52
+    - 53
+
+# do not change
+gui-version: 1

@@ -1,0 +1,256 @@
+commands:
+  help: |
+    &8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+             &#00F7DDCocoFFA Help &8(&71/1 page&8)
+
+     &8• &#00F7DD/{command} create &7<&#00F7DDarena-name&7> &7» &fCreate new arena
+     &8• &#00F7DD/{command} join &7<&#00F7DDarena-name&7> &7» &fJoin an arena
+     &8• &#00F7DD/{command} leave &7» &fLeave current arena
+     &8• &#00F7DD/{command} start &7<&#00F7DDarena-name&7> &7» &fStart an arena
+     &8• &#00F7DD/{command} stop &7<&#00F7DDarena-name&7> &7» &fStop an arena
+     &8• &#00F7DD/{command} stopall &7» &fStop all arenas
+     &8• &#00F7DD/{command} setstartlocation &7<&#00F7DDarena-name&7> &7» &fSet start location
+     &8• &#00F7DD/{command} setexitlocation &7<&#00F7DDarena-name&7> &7» &fSet exit location
+     &8• &#00F7DD/{command} setbordercenterlocation &7<&#00F7DDarena-name&7> &7» &fSet border center location
+     &8• &#00F7DD/{command} editor &7<&#00F7DDarena-name&7> &7» &fOpen arena editor
+     &8• &#00F7DD/{command} delete &7<&#00F7DDarena-name&7> &7» &fDelete arena and kit
+     &8• &#00F7DD/{command} wins &8[&#00F7DDplayer&8] &7» &fView win statistics
+     &8• &#00F7DD/{command} spectate &7<&#00F7DDarena-name&7> &7» &fSpectate a started arena
+     &8• &#00F7DD/{command} leavespectate &7» &fStop spectating
+     &8• &#00F7DD/{command} reload &7» &fReload configuration
+    &8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    &f
+
+  reload:
+    success: "%prefix% &fConfiguration reloaded #00FF1Csuccessfully&f!"
+    failed: "%prefix% &fReload failed: &#FF0000{file} &ferror occurred&f!"
+    no-permission: "%prefix% &fYou &#FF0000don't &fhave permission to use this command&f!"
+    config: "&f├ #00FF1CReloaded &f&#00F7DDconfig.yml#00FF1C&f!"
+    locale: "&f├ #00FF1CReloaded &f&#00F7DDlocale files#00FF1C&f!"
+    gui: "&f├ #00FF1CReloaded &f&#00F7DDGUI configurations#00FF1C&f!"
+    webhook: "&f├ #00FF1CReloaded &f&#00F7DDwebhook.yml#00FF1C&f!"
+    arenas: "&f├ #00FF1CReloaded &f&#00F7DD{count} &farenas#00FF1C&f!"
+
+  invalid-player: "%prefix% &fPlayer &#FF0000not &ffound&f!"
+  player-required: "%prefix% &fThis command can only be executed by players&f!"
+  missing-argument: "%prefix% &fMissing argument! Usage: &#00F7DD{usage}&f!"
+  no-permission: "%prefix% &fYou &#FF0000don't &fhave permission to use this command&f!"
+  invalid-command: "%prefix% &fInvalid command. Use &#00F7DD/ffa help &ffor available commands&f!"
+  invalid-argument: "%prefix% &fInvalid argument: &#FF0000{error}&f!"
+
+  restricted-in-arena: "%prefix% &fCommand &#00F7DD/{command} &fis not allowed in arena &#00F7DD{arena_name}&f!"
+
+  create:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} create &7<&#00F7DDarena-name&7>"
+    already-exists: "%prefix% &fArena &#00F7DD{arena_name} &falready exists&f!"
+    success: "%prefix% &fArena &#00F7DD{arena_name} &fcreated #00FF1Csuccessfully&f!"
+
+  join:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} join &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    not-started: "%prefix% &fArena &#00F7DD{arena_name} &fis &#FF0000not &frunning&f!"
+    already-started: "%prefix% &fArena &#00F7DD{arena_name} &fis already running&f!"
+    arena-full: "%prefix% &fArena &#00F7DD{arena_name} &fis full&f!"
+    already-in-arena: "%prefix% &fYou are already in an arena&f!"
+    ip-limit-reached: "%prefix% &fYou cannot join this arena! Maximum &#00F7DD{max} &fplayers per IP address allowed&f!"
+    success: "%prefix% &fJoined arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+    broadcast: "%prefix% &#00F7DD{player} &fjoined arena &#00F7DD{arena_name}&f! &8(&#00F7DD{current}&8/&#00F7DD{max}&8)"
+
+  leave:
+    not-in-arena: "%prefix% &fYou are &#FF0000not &fin any arena&f!"
+    success: "%prefix% &fYou left the arena #00FF1Csuccessfully&f!"
+    broadcast: "%prefix% &#00F7DD{player} &fleft arena &#00F7DD{arena_name}&f! &8(&#00F7DD{current}&8/&#00F7DD{max}&8)"
+
+  start:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} start &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    already-started: "%prefix% &fArena &#00F7DD{arena_name} &fis already running&f!"
+    missing-config: "%prefix% &fYou can't start this arena because some settings are &#FF0000not &fset up properly! Check the console for more information&f!"
+    not-enough-players: "%prefix% &f&#FF0000Not &fenough players to start! Required: &#00F7DD{min_players}&f, current: &#00F7DD{current_players}&f!"
+    success: "%prefix% &fArena &#00F7DD{arena_name} &fstarted #00FF1Csuccessfully&f!"
+
+  stop:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} stop &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    not-started: "%prefix% &fArena &#00F7DD{arena_name} &fis &#FF0000not &frunning&f!"
+    success: "%prefix% &fArena &#00F7DD{arena_name} &fstopped #00FF1Csuccessfully&f!"
+
+  stopall:
+    success: "%prefix% &f&#00F7DD{count} &farenas stopped #00FF1Csuccessfully&f!"
+    no-running: "%prefix% &f&#FF0000No &frunning arenas found&f!"
+
+  setstartlocation:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} setstartlocation &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    success: "%prefix% &fStart location for arena &#00F7DD{arena_name} &fset #00FF1Csuccessfully&f!"
+
+  setexitlocation:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} setexitlocation &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    success: "%prefix% &fExit location for arena &#00F7DD{arena_name} &fset #00FF1Csuccessfully&f!"
+
+  setbordercenterlocation:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} setbordercenterlocation &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    success: "%prefix% &fBorder center for arena &#00F7DD{arena_name} &fset #00FF1Csuccessfully&f!"
+
+
+  list:
+    header: "%prefix% &fAvailable arenas&f:"
+    arena-info: "%prefix% &fArena&f: &#00F7DD{arena_name} &8| &fPlayers&f: &#00F7DD{current}&8/&#00F7DD{max} &8| &fState&f: &#00F7DD{state}"
+    no-arenas: "%prefix% &f&#FF0000No &farenas found&f!"
+
+  delete:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} delete &7<&#00F7DDarena-name&7>"
+    not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    arena-running: "%prefix% &fArena &#00F7DD{arena_name} &fis currently running! Stop it first&f!"
+    success: "%prefix% &fArena &#00F7DD{arena_name} &fand its kit deleted #00FF1Csuccessfully&f!"
+    failed: "%prefix% &f&#FF0000Failed &fto delete arena &#00F7DD{arena_name}&f!"
+
+  wins:
+    usage: "%prefix% &fUsage: &#00F7DD/{command} wins &7[&#00F7DDplayer&7]"
+    player-not-found: "%prefix% &fPlayer &#00F7DD{player} &f&#FF0000not &ffound&f!"
+    result: "%prefix% &#00F7DD{player} &fwins&f: &#00F7DD{wins}"
+
+  spectate:
+    already-in-arena: "%prefix% &fYou cannot spectate while in an arena! Leave your current arena first&f!"
+    already-spectating: "%prefix% &fYou are already spectating an arena&f!"
+    arena-not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    arena-not-started: "%prefix% &fArena &#00F7DD{arena_name} &fis &#FF0000not &fstarted&f!"
+    arena-empty: "%prefix% &fArena &#00F7DD{arena_name} &fhas no players to spectate&f!"
+    success: "%prefix% &fYou are now spectating arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+    arena-ended: "%prefix% &fThe arena &#00F7DD{arena_name} &fhas ended&f. You have been removed from spectator mode&f."
+    not-spectating: "%prefix% &fYou are &#FF0000not &fspectating any arena&f!"
+    spectated-arena-not-found: "%prefix% &fThe spectated arena was &#FF0000not &ffound&f!"
+    teleported-to-player: "%prefix% &fYou have been teleported to &#00F7DD{player_name}&f!"
+    player-offline: "%prefix% &fThe player &#00F7DD{player_name} &fis &#FF0000no longer &fonline&f!"
+    command-blocked: "%prefix% &fYou &#FF0000cannot &fuse commands while in spectator mode&f!"
+
+  leavespectate:
+    not-spectating: "%prefix% &fYou are &#FF0000not &fspectating any arena&f!"
+    success: "%prefix% &fYou have stopped spectating arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+
+starter:
+  start: "%prefix% &fYou started arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+  already-running: "%prefix% &fArena &#00F7DD{arena_name} &fis already running&f!"
+
+givestarter:
+  invalid-amount: "%prefix% &f&#FF0000Invalid &famount! Please enter a number between &#00F7DD1 &fand &#00F7DD64&f!"
+  gave: "%prefix% &fGave &#00F7DD{amount}x &fstarter item for arena &#00F7DD{arena_name} &fto player &#00F7DD{player} #00FF1Csuccessfully&f!"
+  received: "%prefix% &fYou received &#00F7DD{amount}x &fstarter item for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+  disabled: "%prefix% &fStarter item is &#FF0000disabled &ffor arena &#00F7DD{arena_name}&f!"
+
+arena-started-broadcast: "%prefix% &#00F7DD{player} &fstarted arena &#00F7DD{arena_name}&f!"
+
+editor:
+  opened: "%prefix% &fOpened editor for arena &#00F7DD{arena_name}&f! &fDon't forget to reload with &#00F7DD/cocoffa reload &fafter making changes&f!"
+  kit:
+    opened: "%prefix% &fOpened kit editor for arena &#00F7DD{arena_name}&f! &fConfigure your kit and save when ready&f!"
+    arena-not-found: "%prefix% &fArena &#00F7DD{arena_name} &f&#FF0000not &ffound&f!"
+    config-error: "%prefix% &fKit editor GUI has &#FF0000invalid &fconfiguration! Check the console&f!"
+    save-error: "%prefix% &f&#FF0000Error &foccurred while saving kit&f!"
+    saved: "%prefix% &fKit saved for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+    cancelled: "%prefix% &fKit editing &#FF0000cancelled&f!"
+    offhand-removed: "%prefix% &fItem removed from offhand&f."
+    offhand-added: "%prefix% &fItem added to offhand&f. &#00F7DDRight click &fto remove&f."
+    auto-armor-removed: "%prefix% &fItem removed from auto armor&f."
+    auto-armor-added: "%prefix% &fItem added to auto armor&f. &#00F7DDShift + Right click &fto remove&f."
+    auto-armor-not-armor: "%prefix% &fThis item is &#FF0000not &fan armor piece&f!"
+  display-name:
+    prompt: "%prefix% &fWrite the new display name for arena &#00F7DD{arena_name}&f: &8(write '&#00F7DDstop&8' to cancel)"
+    updated: "%prefix% &fDisplay name updated for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+    cancelled: "%prefix% &fDisplay name change &#FF0000cancelled&f!"
+  location:
+    exit:
+      prompt: "%prefix% &fGo to the location and write '&#00F7DDDONE&f' or write '&#00F7DDCANCEL&f' to stop"
+      set: "%prefix% &fExit location set for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cancelled: "%prefix% &fExit location setting &#FF0000cancelled&f!"
+    join:
+      prompt: "%prefix% &fGo to the location and write '&#00F7DDDONE&f' or write '&#00F7DDCANCEL&f' to stop"
+      set: "%prefix% &fJoin location set for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cancelled: "%prefix% &fJoin location setting &#FF0000cancelled&f!"
+    border:
+      prompt: "%prefix% &fGo to the location and write '&#00F7DDDONE&f' or write '&#00F7DDCANCEL&f' to stop"
+      set: "%prefix% &fBorder center set for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cancelled: "%prefix% &fBorder center setting &#FF0000cancelled&f!"
+  scoreboard:
+    title:
+      prompt: "%prefix% &fWrite the new scoreboard title&f: &8(write '&#00F7DDstop&8' to cancel)"
+      updated: "%prefix% &fScoreboard title updated for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cancelled: "%prefix% &fScoreboard title change &#FF0000cancelled&f!"
+    lines:
+      add-prompt: "%prefix% &fWrite the new scoreboard line&f: &8(write '&#00F7DDstop&8' to cancel)"
+      added: "%prefix% &fScoreboard line added for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      removed: "%prefix% &fLast scoreboard line removed for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cleared: "%prefix% &fAll scoreboard lines cleared for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cancelled: "%prefix% &fScoreboard line addition &#FF0000cancelled&f!"
+    toggle:
+      enabled: "%prefix% &fScoreboard #00FF1Cenabled &ffor arena &#00F7DD{arena_name}&f!"
+      disabled: "%prefix% &fScoreboard &#FF0000disabled &ffor arena &#00F7DD{arena_name}&f!"
+
+  reward:
+    command:
+      prompt: "%prefix% &fWrite the command here without the slash&f:"
+      placeholder-info: "&fValid placeholder&f: &#00F7DD%player%"
+      stop-info: "&fType '&#00F7DDstop&f' to cancel"
+      added: "%prefix% &fReward command '&#00F7DD{command}&f' added for arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      removed: "%prefix% &fReward command '&#00F7DD{command}&f' removed from arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+      cancelled: "%prefix% &fReward command addition &#FF0000cancelled&f!"
+
+border:
+  countdown: "%prefix% &fYou are outside the border! Teleporting back in &#00F7DD{seconds} &fseconds&f..."
+  teleported: "%prefix% &fTeleported back to the border center&f!"
+
+setup:
+  usage: "%prefix% &fUsage: &#00F7DD/{command} setup &7<&#00F7DDarena&7> &7<&#00F7DDstart-location&7|&#00F7DDexit-location&7|&#00F7DDborder-center-location&7>"
+  invalid-type: "%prefix% &f&#FF0000Invalid &fsetup type! Use&f: &#00F7DDstart-location&f, &#00F7DDexit-location&f, or &#00F7DDborder-center-location&f!"
+  start-location:
+    success: "%prefix% &fStart location for arena &#00F7DD{arena_name} &fset #00FF1Csuccessfully&f!"
+  exit-location:
+    success: "%prefix% &fExit location for arena &#00F7DD{arena_name} &fset #00FF1Csuccessfully&f!"
+  border-center-location:
+    success: "%prefix% &fBorder center location for arena &#00F7DD{arena_name} &fset #00FF1Csuccessfully&f!"
+
+startrandom:
+  no-arenas: "%prefix% &f&#FF0000No &farenas available&f!"
+  no-available: "%prefix% &f&#FF0000No &favailable arenas to start&f!"
+  success: "%prefix% &fRandomly started arena &#00F7DD{arena_name} #00FF1Csuccessfully&f!"
+
+resetwins:
+  usage: "%prefix% &fUsage: &#00F7DD/{command} resetwins &7<&#00F7DDplayer&7>"
+  success: "%prefix% &fReset wins for player &#00F7DD{player_name} #00FF1Csuccessfully&f!"
+  failed: "%prefix% &f&#FF0000Failed &fto reset wins for player &#00F7DD{player_name}&f!"
+
+arena:
+  countdown:
+    starting: "%prefix% &#00F7DD{start_seconds} &fseconds remaining until &#00F7DD{arena_name} &fstarts&f!"
+    cancelled: "%prefix% &fCountdown for arena &#00F7DD{arena_name} &f&#FF0000cancelled&f! Not enough players&f."
+    chat: "%prefix% &fArena &#00F7DD{arena_name} &fstarts in &#00F7DD{countdown} &fseconds&f!"
+    broadcast: "%prefix% &#00F7DD{arena_name} &farena starts in &#00F7DD{countdown} &fseconds&f!"
+    broadcast_hover: "&7Click here to join!\n&8Arena: &#00F7DD{arena_name}\n&8Players: &#00F7DD{current}&8/&#00F7DD{max}"
+    broadcast_join_button: "%prefix% &#00FF1C&l[JOIN]"
+  enderpearl:
+    restricted: "%prefix% &fYou cannot throw enderpearls outside the border&f!"
+  player:
+    eliminated: "%prefix% &fPlayer &#00F7DD{player} &fwas eliminated&f."
+  winner-broadcast: "%prefix% &#00F7DD{player} &fhas won the &#00F7DD{arena_name} &farena&f!"
+  border-broadcast: "%prefix% &fWorld border is shrinking to &#00F7DD%size% &fblocks in &#00F7DD%time% &fseconds&f."
+  effect-broadcast: "%prefix% &#00F7DD%effect% &feffect has been activated&f."
+  started-broadcast: "%prefix% &fArena &#00F7DD{arena_name} &fhas #00FF1Cstarted&f! #00FF1CFight&f!"
+
+console:
+  arena:
+    missing-settings:
+      header: "&8[&bCocoFFA&8] &fSome settings are &#FF0000not &fset&f:"
+      header-with-arena: "&8[&bCocoFFA&8] &fSome settings are &#FF0000not &fset for arena &#00F7DD{arena_name}&f:"
+      item: "&8[&bCocoFFA&8] &f- &#00F7DD{missing}"
+      footer: "&8[&bCocoFFA&8] &fSet these values with the &#00F7DD/ffa setup &fcommand&f!"
+      footer-with-command: "&8[&bCocoFFA&8] &fSet these values with the &#00F7DD/{command} setup &fcommand&f!"
+
+update:
+  console: "%prefix% &fNew version available: &#00FF07%latest% &8(&fCurrent: &#FF0000%current%&8)"
+  player: "%prefix% &fNew version available: &#00FF07%latest% &8([link]&#00FF07Download here[/link]&8)"
+  error: "%prefix% &fFailed to check for updates: &#FF0000%error%"
+
+# do not change
+locale-version: 1

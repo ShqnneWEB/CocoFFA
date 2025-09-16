@@ -1,0 +1,133 @@
+prefix: "&8[&#00F7DDC&#00E9DDo&#00DBDCc&#01CEDCo&#01C0DBF&#01B2DBF&#01A4DAA&8] &7»"
+
+command:
+  main: "ffa"
+  aliases:
+    - "freeforall"
+
+locale-file: "messages_en.yml"
+
+settings:
+  database:
+    type: "sqlite"
+    table-prefix: "cocoffa_"
+
+    mysql:
+      host: "localhost"
+      port: 3306
+      database: "cocoffa"
+      username: "root"
+      password: ""
+      ssl: false
+      pool-size: 10
+
+    sqlite:
+      file: "cocoffa.db"
+
+# this will be used in plugin placeholders
+infiniteSymbol: "∞"
+
+# How often should leaderboards update?
+# The updates are done async, so this doesn't really affect performance
+# This value only changes after a restart
+leaderboard-update-seconds: 180
+
+# how long should players have to wait for the arena to start?
+# in seconds
+waiting-time: 180
+
+# Default player limits for all arenas
+player-limits:
+  min-players: 2
+  max-players: -1 # set to -1 for unlimited
+
+# before the ffa starts, how many seconds before should there be a broadcast to the players?
+broadcast:
+  enabled: true
+  times:
+    - 180
+    - 120
+    - 60
+    - 30
+    - 10
+    - 5
+    - 3
+    - 2
+    - 1
+
+# allowed commands while within an ffa arena
+allowed-commands:
+  enabled: true
+  commands:  # list of allowed commands (without /), use "*" to allow all commands
+    - "ffa"
+    - "freeforall"
+    - "msg"
+    - "tell"
+    - "r"
+    - "reply"
+    - "spawn"
+    - "tpa"
+    - "tpaccept"
+    - "tpdeny"
+    - "home"
+    - "sethome"
+    - "warp"
+
+item-dropping:
+  countdown:
+    enabled: true
+  in-game:
+    enabled: false
+
+max-players-per-ip:
+  enabled: true
+  max: 1
+
+enderpearl:
+  restrict-outside-border: true  # Whether to prevent throwing enderpearls outside arena border
+
+border:
+  teleport-if-outside-border: true  # if players should be teleported back if outside the border block range
+  seconds: 3  # seconds before teleportation
+  blocks: 3  # border block range
+
+player-state-management:
+  enabled: true
+  allowed-gamemodes:  # list of allowed gamemodes, use "*" to allow all gamemodes
+    - "SURVIVAL"
+    - "ADVENTURE"
+  force-gamemode: "SURVIVAL"  # gamemode to set for players when their current gamemode is not allowed
+  fly:
+    disable-on-join: true
+
+spectator:
+  staff-can-see: true
+  exit-gamemode: "SURVIVAL"  # gamemode to set for players when they stop spectating
+  items:
+    player-selector:
+      material: "COMPASS"
+      name: "&ePlayer Selector"
+      lore:
+        - "&fRight-click to teleport to players"
+        - "&fin the arena you're spectating"
+    leave-spectate:
+      material: "BARRIER"
+      name: "&cLeave Spectate"
+      lore:
+        - "&fRight-click to stop spectating"
+        - "&fand return to spawn"
+
+placeholders:
+  prefix: "cocoffa"
+  toplist_wins:
+    placeholder: "toplist_<place>"
+    value: "&#f5c400#%place% &f%player% &7» &#FF3737%wins% wins"
+    none: "&#f5c400#%place% &f- &7» &#FF3737- wins"
+  wins:
+    placeholder: "wins"
+    value: "&f%value%"
+    none: "&c0"
+
+
+# do not change
+config-version: 2

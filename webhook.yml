@@ -1,0 +1,96 @@
+win:
+  url: "https://discord.com/api/webhooks/URL"
+  embed:
+    title: "🏆 Arena Victory"
+    description: |
+      **Victory Details:**
+      • Winner: `%player%`
+      • Arena: `%arena%`
+      • Kills: `%kills%`
+
+      🎉 Congratulations on your victory!
+    color: "#FFD700"
+    footer: "CocoFFA"
+    image: ""
+    thumbnail: ""
+
+join:
+  url: "https://discord.com/api/webhooks/URL"
+  embed:
+    title: "➕ Player Joined Arena"
+    description: |
+      **Join Details:**
+      • Player: `%player%`
+      • Arena: `%arena%`
+      • Players: `%current_players%/%max_players%`
+
+      🔥 The battle is heating up!
+    color: "#00FF00"
+    footer: "CocoFFA"
+    image: ""
+    thumbnail: ""
+
+leave:
+  url: "https://discord.com/api/webhooks/URL"
+  embed:
+    title: "➖ Player Left Arena"
+    description: |
+      **Leave Details:**
+      • Player: `%player%`
+      • Arena: `%arena%`
+      • Players: `%current_players%/%max_players%`
+
+      👋 Player has left the battlefield.
+    color: "#FF0000"
+    footer: "CocoFFA"
+    image: ""
+    thumbnail: ""
+
+start:
+  url: "https://discord.com/api/webhooks/URL"
+  embed:
+    title: "🎮 Arena Started"
+    description: |
+      **Arena Start:**
+      • Arena: `%arena%`
+      • Players: `%player_count%`
+
+      ⚔️ Let the battle begin!
+    color: "#00FFFF"
+    footer: "CocoFFA"
+    image: ""
+    thumbnail: ""
+
+stop:
+  url: "https://discord.com/api/webhooks/URL"
+  embed:
+    title: "🛑 Arena Stopped"
+    description: |
+      **Arena Stop:**
+      • Arena: `%arena%`
+      • Reason: `%reason%`
+
+      🏁 The battle has ended!
+    color: "#FFA500"
+    footer: "CocoFFA"
+    image: ""
+    thumbnail: ""
+
+kill:
+  url: "https://discord.com/api/webhooks/URL"
+  embed:
+    title: "💀 Player Eliminated"
+    description: |
+      **Elimination:**
+      • Eliminated: `%victim%`
+      • Killer: `%killer%`
+      • Arena: `%arena%`
+
+      ⚔️ Another warrior falls in battle!
+    color: "#FF4500"
+    footer: "CocoFFA"
+    image: ""
+    thumbnail: ""
+
+# do not change
+webhook-version: 1

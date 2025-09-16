@@ -1,0 +1,85 @@
+title: "&8             ᴋɪᴛ ᴇᴅɪᴛᴏʀ"
+rows: 6
+
+open-sound: "BLOCK_ANVIL_PLACE"
+
+# Editable slots
+# Slots 9-44 are editable (rows 2-5, excluding bottom row)
+editable_area:
+  start_slot: 9
+  end_slot: 44
+
+items:
+  save:
+    slot: 45
+    material: "EMERALD_BLOCK"
+    name: "&#00FF1CSave"
+    lore:
+      - ""
+      - "&fClick here to save"
+      - "&fall items in the gui."
+      - ""
+      - "&#FF0000Attention: &fAlways save the changes"
+      - ""
+      - "&eLeft-Click &6» &fSave Changes"
+
+  cancel:
+    slot: 53
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ=="
+    name: "&#FF0000Back"
+    lore:
+      - ""
+      - "&fClick gere to go"
+      - "&fback to the main menu."
+      - ""
+      - "&eLeft-Click &6» &fBack"
+
+  info:
+    slot: 49
+    material: "COMPASS"
+    name: "&#FCFF00Information"
+    lore:
+      - ""
+      - "&fPlace the items however"
+      - "&fyou want and save the kit."
+      - ""
+      - "&eRight-Click &6» &fSet Offhand Item"
+      - "&eShift + Right-Click &6» &fSet Auto Armor Item"
+
+offhand:
+  lore:
+    - ""
+    - "&fOffhand &#00FF1CENABLED"
+    - ""
+    - "&eRight-Click &6» &fRemove"
+
+auto_armor:
+  lore:
+    - ""
+    - "&b&lAUTO ARMOR ENABLED"
+    - ""
+    - "&eShift + Right-Click &6» &fRemove"
+
+filler:
+  material: "GRAY_STAINED_GLASS_PANE"
+  name: "&7"
+  lore: []
+  filler-slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 46
+    - 47
+    - 48
+    - 50
+    - 51
+    - 52
+
+# do not change
+gui-version: 1

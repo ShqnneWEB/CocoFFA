@@ -1,0 +1,255 @@
+commands:
+  help: |
+    &8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+             &#00F7DDCocoFFA Súgó &8(&71/1 oldal&8)
+
+     &8• &#00F7DD/{command} create &7<&#00F7DDaréna-név&7> &7» &fÚj aréna létrehozása
+     &8• &#00F7DD/{command} join &7<&#00F7DDaréna-név&7> &7» &fCsatlakozás arénához
+     &8• &#00F7DD/{command} leave &7» &fKilépés az arénából
+     &8• &#00F7DD/{command} start &7<&#00F7DDaréna-név&7> &7» &fAréna indítása
+     &8• &#00F7DD/{command} stop &7<&#00F7DDaréna-név&7> &7» &fAréna leállítása
+     &8• &#00F7DD/{command} stopall &7» &fÖsszes aréna leállítása
+     &8• &#00F7DD/{command} setstartlocation &7<&#00F7DDaréna-név&7> &7» &fKezdő pozíció beállítása
+     &8• &#00F7DD/{command} setexitlocation &7<&#00F7DDaréna-név&7> &7» &fKilépési pont beállítása
+     &8• &#00F7DD/{command} setbordercenterlocation &7<&#00F7DDaréna-név&7> &7» &fHatár középpontjának beállítása
+     &8• &#00F7DD/{command} editor &7<&#00F7DDaréna-név&7> &7» &fAréna szerkesztő megnyitása
+     &8• &#00F7DD/{command} delete &7<&#00F7DDaréna-név&7> &7» &fAréna és felszerelés törlése
+     &8• &#00F7DD/{command} wins &8[&#00F7DDjátékos&8] &7» &fGyőzelmi statisztikák megtekintése
+     &8• &#00F7DD/{command} spectate &7<&#00F7DDaréna-név&7> &7» &fFutó aréna megfigyelése
+     &8• &#00F7DD/{command} leavespectate &7» &fMegfigyelés befejezése
+     &8• &#00F7DD/{command} reload &7» &fKonfiguráció újratöltése
+    &8&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    &f
+
+  reload:
+    success: "%prefix% &fKonfiguráció &#00FF1Csikeresen &fújratöltve&f!"
+    failed: "%prefix% &fSikertelen újratöltés: &#FF0000{file} &fhiba történt&f!"
+    no-permission: "%prefix% &fNincs jogosultságod &#FF0000ehhez &fa parancshoz&f!"
+    config: "&f├ #00FF1CÚjratöltve&f: &#00F7DDconfig.yml#00FF1C&f!"
+    locale: "&f├ #00FF1CÚjratöltve&f: &#00F7DDnyelvi fájlok#00FF1C&f!"
+    gui: "&f├ #00FF1CÚjratöltve&f: &#00F7DDmenü konfigurációk#00FF1C&f!"
+    webhook: "&f├ #00FF1CÚjratöltve&f: &#00F7DDwebhook.yml#00FF1C&f!"
+    arenas: "&f├ #00FF1CÚjratöltve&f: &#00F7DD{count} &faréna#00FF1C&f!"
+
+  invalid-player: "%prefix% &fJátékos &#FF0000nem &ftalálható&f!"
+  player-required: "%prefix% &fEzt a parancsot csak játékosok használhatják&f!"
+  missing-argument: "%prefix% &fHiányzó argumentum! Használat: &#00F7DD{usage}&f!"
+  no-permission: "%prefix% &fNincs jogosultságod &#FF0000ehhez &fa parancshoz&f!"
+  invalid-command: "%prefix% &fÉrvénytelen parancs. Használd a &#00F7DD/ffa help &fparancsot az elérhető parancsokhoz&f!"
+  invalid-argument: "%prefix% &fÉrvénytelen argumentum: &#FF0000{error}&f!"
+
+  restricted-in-arena: "%prefix% &fA &#00F7DD/{command} &fparancs nem használható a &#00F7DD{arena_name} &farénában&f!"
+
+  create:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} create &7<&#00F7DDaréna-név&7>"
+    already-exists: "%prefix% &fA &#00F7DD{arena_name} &faréna már létezik&f!"
+    success: "%prefix% &fA &#00F7DD{arena_name} &faréna #00FF1Csikeresen &flétrehozva&f!"
+
+  join:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} join &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    not-started: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nincs &felindítva&f!"
+    already-started: "%prefix% &fA &#00F7DD{arena_name} &faréna már elkezdődött&f!"
+    arena-full: "%prefix% &fA &#00F7DD{arena_name} &faréna betelt&f!"
+    already-in-arena: "%prefix% &fMár egy arénában vagy&f!"
+    ip-limit-reached: "%prefix% &fNem csatlakozhatsz ehhez az arénához! Maximum &#00F7DD{max} &fjátékos IP-címenként&f!"
+    success: "%prefix% &f#00FF1CSikeresen &fcsatlakoztál a &#00F7DD{arena_name} &farénához&f!"
+    broadcast: "%prefix% &#00F7DD{player} &fcsatlakozott a &#00F7DD{arena_name} &farénához&f! &8(&#00F7DD{current}&8/&#00F7DD{max}&8)"
+
+  leave:
+    not-in-arena: "%prefix% &f&#FF0000Nem &fvagyy egyetlen arénában sem&f!"
+    success: "%prefix% &f#00FF1CSikeresen &fkiléptél az arénából&f!"
+    broadcast: "%prefix% &#00F7DD{player} &fkilépett a(z) &#00F7DD{arena_name} &farénából&f! &8(&#00F7DD{current}&8/&#00F7DD{max}&8)"
+
+  start:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} start &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    already-started: "%prefix% &fA &#00F7DD{arena_name} &faréna már fut&f!"
+    missing-config: "%prefix% &fNem indíthatod el ezt az arénát, mert néhány beállítás &#FF0000nincs &fmegadva! Nézd meg a konzolt további információért&f!"
+    not-enough-players: "%prefix% &f&#FF0000Nincs &felég játékos az indításhoz! Szükséges: &#00F7DD{min_players}&f, jelenlegi: &#00F7DD{current_players}&f!"
+    success: "%prefix% &fA &#00F7DD{arena_name} &faréna #00FF1Csikeresen &felindult&f!"
+
+  stop:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} stop &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    not-started: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nincs &felindítva&f!"
+    success: "%prefix% &fA &#00F7DD{arena_name} &faréna #00FF1Csikeresen &fleállítva&f!"
+
+  stopall:
+    success: "%prefix% &f&#00F7DD{count} &faréna #00FF1Csikeresen &fleállítva&f!"
+    no-running: "%prefix% &f&#FF0000Nincs &ffutó aréna&f!"
+
+  setstartlocation:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} setstartlocation &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    success: "%prefix% &fKezdő pozíció beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+
+  setexitlocation:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} setexitlocation &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    success: "%prefix% &fKilépési pont beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+
+  setbordercenterlocation:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} setbordercenterlocation &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    success: "%prefix% &fHatár középpontja beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+
+  list:
+    header: "%prefix% &fElérhető arénák&f:"
+    arena-info: "%prefix% &fAréna&f: &#00F7DD{arena_name} &8| &fJátékosok&f: &#00F7DD{current}&8/&#00F7DD{max} &8| &fÁllapot&f: &#00F7DD{state}"
+    no-arenas: "%prefix% &f&#FF0000Nincs &felérhető aréna&f!"
+
+  delete:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} delete &7<&#00F7DDaréna-név&7>"
+    not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    arena-running: "%prefix% &fA &#00F7DD{arena_name} &faréna jelenleg fut! Először állítsd le&f!"
+    success: "%prefix% &fA &#00F7DD{arena_name} &faréna és felszerelése #00FF1Csikeresen &ftörölve&f!"
+    failed: "%prefix% &f&#FF0000Sikertelen &fa &#00F7DD{arena_name} &faréna törlése&f!"
+
+  wins:
+    usage: "%prefix% &fHasználat: &#00F7DD/{command} wins &7[&#00F7DDjátékos&7]"
+    player-not-found: "%prefix% &fA &#00F7DD{player} &fjátékos &#FF0000nem &ftalálható&f!"
+    result: "%prefix% &#00F7DD{player} &fgyőzelmei&f: &#00F7DD{wins}"
+
+  spectate:
+    already-in-arena: "%prefix% &fNem figyelhetsz meg arénát, amíg magad is játszol! Lépj ki a jelenlegi arénádból&f!"
+    already-spectating: "%prefix% &fMár figyelsz egy arénát&f!"
+    arena-not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    arena-not-started: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nincs &felindítva&f!"
+    arena-empty: "%prefix% &fA &#00F7DD{arena_name} &farénában nincs kit megfigyelni&f!"
+    success: "%prefix% &fMost figyeled a &#00F7DD{arena_name} &farénát #00FF1Csikeresen&f!"
+    arena-ended: "%prefix% &fA &#00F7DD{arena_name} &faréna befejeződött&f. El lettél távolítva a megfigyelő módból&f."
+    not-spectating: "%prefix% &f&#FF0000Nem &ffigyelsz egyetlen arénát sem&f!"
+    spectated-arena-not-found: "%prefix% &fA figyelt aréna &#FF0000nem &ftalálható&f!"
+    teleported-to-player: "%prefix% &fOda lettél teleportálva &#00F7DD{player_name}&f játékoshoz&f."
+    player-offline: "%prefix% &fA &#00F7DD{player_name} &fjátékos &#FF0000már nincs &fonline&f!"
+    command-blocked: "%prefix% &f&#FF0000Nem használhatsz parancsokat &fmegfigyelő módban&f!"
+
+  leavespectate:
+    not-spectating: "%prefix% &f&#FF0000Nem &ffigyelsz egyetlen arénát sem&f!"
+    success: "%prefix% &fBefejezted a &#00F7DD{arena_name} &faréna megfigyelését #00FF1Csikeresen&f!"
+
+starter:
+  start: "%prefix% &fElindítottad a &#00F7DD{arena_name} &farénát #00FF1Csikeresen&f!"
+  already-running: "%prefix% &fA &#00F7DD{arena_name} &faréna már fut&f!"
+
+givestarter:
+  invalid-amount: "%prefix% &f&#FF0000Érvénytelen &fmennyiség! Kérlek adj meg egy számot &#00F7DD1 &fés &#00F7DD64 &fközött&f!"
+  gave: "%prefix% &fAdtál &#00F7DD{amount}x &findító tárgyat a(z) &#00F7DD{arena_name} &farénához &#00F7DD{player} &fjátékosnak #00FF1Csikeresen&f!"
+  received: "%prefix% &fKaptál &#00F7DD{amount}x &findító tárgyat a(z) &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+  disabled: "%prefix% &fAz indító tárgy &#FF0000letiltva &fa &#00F7DD{arena_name} &farénában&f!"
+
+arena-started-broadcast: "%prefix% &#00F7DD{player} &felindította a &#00F7DD{arena_name} &farénát&f!"
+
+editor:
+  opened: "%prefix% &fSzerkesztő megnyitva a &#00F7DD{arena_name} &farénához&f! &fNe felejtsd el újratölteni a &#00F7DD/cocoffa reload &fparanccsal a változások után&f!"
+  kit:
+    opened: "%prefix% &fFelszerelés szerkesztő megnyitva a &#00F7DD{arena_name} &farénához&f! &fÁllítsd be a felszerelést és mentsd el amikor készen vagy&f!"
+    arena-not-found: "%prefix% &fA &#00F7DD{arena_name} &faréna &#FF0000nem &ftalálható&f!"
+    config-error: "%prefix% &fA felszerelés szerkesztő menüjének &#FF0000hibás &fa konfigurációja! Nézd meg a konzolt&f!"
+    save-error: "%prefix% &f&#FF0000Hiba &ftörtént a felszerelés mentésekor&f!"
+    saved: "%prefix% &fFelszerelés mentve a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+    cancelled: "%prefix% &fFelszerelés szerkesztés &#FF0000megszakítva&f!"
+    offhand-removed: "%prefix% &fTárgy eltávolítva a bal kézből&f."
+    offhand-added: "%prefix% &fTárgy hozzáadva a bal kézhez&f. &#00F7DDJobb klikk &faz eltávolításhoz&f."
+    auto-armor-removed: "%prefix% &fTárgy eltávolítva az automatikus páncélból&f."
+    auto-armor-added: "%prefix% &fTárgy hozzáadva az automatikus páncélhoz&f. &#00F7DDShift + Jobb klikk &faz eltávolításhoz&f."
+    auto-armor-not-armor: "%prefix% &fEz a tárgy &#FF0000nem &fpáncél darab&f!"
+  display-name:
+    prompt: "%prefix% &fÍrd be az új megjelenítési nevet a &#00F7DD{arena_name} &farénához&f: &8(írd be a '&#00F7DDstop&8'-ot a megszakításhoz)"
+    updated: "%prefix% &fMegjelenítési név frissítve a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+    cancelled: "%prefix% &fMegjelenítési név változtatás &#FF0000megszakítva&f!"
+  location:
+    exit:
+      prompt: "%prefix% &fMenj a helyszínre és írd be hogy '&#00F7DDDONE&f' vagy írd be hogy '&#00F7DDCANCEL&f' a leállításhoz"
+      set: "%prefix% &fKilépési pont beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+      cancelled: "%prefix% &fKilépési pont beállítás &#FF0000megszakítva&f!"
+    join:
+      prompt: "%prefix% &fMenj a helyszínre és írd be hogy '&#00F7DDDONE&f' vagy írd be hogy '&#00F7DDCANCEL&f' a leállításhoz"
+      set: "%prefix% &fCsatlakozási pont beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+      cancelled: "%prefix% &fCsatlakozási pont beállítás &#FF0000megszakítva&f!"
+    border:
+      prompt: "%prefix% &fMenj a helyszínre és írd be hogy '&#00F7DDDONE&f' vagy írd be hogy '&#00F7DDCANCEL&f' a leállításhoz"
+      set: "%prefix% &fHatár középpontja beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+      cancelled: "%prefix% &fHatár középpont beállítás &#FF0000megszakítva&f!"
+  scoreboard:
+    title:
+      prompt: "%prefix% &fÍrd be az új eredménytábla címet&f: &8(írd be a '&#00F7DDstop&8'-ot a megszakításhoz)"
+      updated: "%prefix% &fEredménytábla címe frissítve a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+      cancelled: "%prefix% &fEredménytábla cím változtatás &#FF0000megszakítva&f!"
+    lines:
+      add-prompt: "%prefix% &fÍrd be az új eredménytábla sort&f: &8(írd be a '&#00F7DDstop&8'-ot a megszakításhoz)"
+      added: "%prefix% &fEredménytábla sor hozzáadva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+      removed: "%prefix% &fUtolsó eredménytábla sor eltávolítva a &#00F7DD{arena_name} &farénából #00FF1Csikeresen&f!"
+      cleared: "%prefix% &fÖsszes eredménytábla sor törölve a &#00F7DD{arena_name} &farénából #00FF1Csikeresen&f!"
+      cancelled: "%prefix% &fEredménytábla sor hozzáadás &#FF0000megszakítva&f!"
+    toggle:
+      enabled: "%prefix% &fEredménytábla #00FF1Cbekapcsolva &fa &#00F7DD{arena_name} &farénában&f!"
+      disabled: "%prefix% &fEredménytábla &#FF0000kikapcsolva &fa &#00F7DD{arena_name} &farénában&f!"
+
+  reward:
+    command:
+      prompt: "%prefix% &fÍrd be a parancsot perjel nélkül&f:"
+      placeholder-info: "&fÉrvényes helyettesítő&f: &#00F7DD%player%"
+      stop-info: "&fÍrd be a '&#00F7DDstop&f'-ot a megszakításhoz"
+      added: "%prefix% &fJutalom parancs '&#00F7DD{command}&f' hozzáadva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+      removed: "%prefix% &fJutalom parancs '&#00F7DD{command}&f' eltávolítva a &#00F7DD{arena_name} &farénából #00FF1Csikeresen&f!"
+      cancelled: "%prefix% &fJutalom parancs hozzáadás &#FF0000megszakítva&f!"
+
+border:
+  countdown: "%prefix% &fAz aréna határán kívül vagy! Visszateleportálás &#00F7DD{seconds} &fmásodperc múlva&f..."
+  teleported: "%prefix% &fVissza lettél teleportálva a határ középpontjához&f!"
+
+setup:
+  usage: "%prefix% &fHasználat: &#00F7DD/{command} setup &7<&#00F7DDaréna&7> &7<&#00F7DDstart-location&7|&#00F7DDexit-location&7|&#00F7DDborder-center-location&7>"
+  invalid-type: "%prefix% &f&#FF0000Érvénytelen &fbeállítás típus! Használj&f: &#00F7DDstart-location&f, &#00F7DDexit-location&f, vagy &#00F7DDborder-center-location&f!"
+  start-location:
+    success: "%prefix% &fKezdő pozíció beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+  exit-location:
+    success: "%prefix% &fKilépési pont beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+  border-center-location:
+    success: "%prefix% &fHatár középpontja beállítva a &#00F7DD{arena_name} &farénához #00FF1Csikeresen&f!"
+
+startrandom:
+  no-arenas: "%prefix% &f&#FF0000Nincsenek &felérhető arénák&f!"
+  no-available: "%prefix% &f&#FF0000Nincs &felérhető aréna az indításhoz&f!"
+  success: "%prefix% &fVéletlenszerűen elindítva a &#00F7DD{arena_name} &faréna #00FF1Csikeresen&f!"
+
+resetwins:
+  usage: "%prefix% &fHasználat: &#00F7DD/{command} resetwins &7<&#00F7DDjátékos&7>"
+  success: "%prefix% &fGyőzelmek visszaállítva a &#00F7DD{player_name} &fjátékosnak #00FF1Csikeresen&f!"
+  failed: "%prefix% &f&#FF0000Sikertelen &fa győzelmek visszaállítása a &#00F7DD{player_name} &fjátékosnak&f!"
+
+arena:
+  countdown:
+    starting: "%prefix% &fMég &#00F7DD{start_seconds} &fmásodperc van hátra a &#00F7DD{arena_name} &faréna indulásáig&f!"
+    cancelled: "%prefix% &fA(z) &#00F7DD{arena_name} &faréna visszaszámlálása &#FF0000megszakítva&f! Nincs elég játékos&f."
+    chat: "%prefix% &fA(z) &#00F7DD{arena_name} &faréna &#00F7DD{countdown} &fmásodperc múlva indul&f!"
+    broadcast: "%prefix% &fA(z) &#00F7DD{arena_name} &faréna &#00F7DD{countdown} &fmásodperc múlva indul&f!"
+    broadcast_hover: "&7Kattints ide a csatlakozáshoz!\n&8Aréna: &#00F7DD{arena_name}\n&8Játékosok: &#00F7DD{current}&8/&#00F7DD{max}"
+    broadcast_join_button: "%prefix% &#00FF1C&l[CSATLAKOZÁS]"
+  enderpearl:
+    restricted: "%prefix% &4Nem dobhatsz enderpearl-t a határon túlra!"
+  player:
+    eliminated: "%prefix% &fA &#00F7DD{player} &fjátékos kiesett&f."
+  winner-broadcast: "%prefix% &#00F7DD{player} &fmegnyerte a(z) &#00F7DD{arena_name} &farénát&f!"
+  border-broadcast: "%prefix% &fA világ határa &#00F7DD%size% &fblokk méretűre zsugorodik &#00F7DD%time% &fmásodperc alatt&f."
+  effect-broadcast: "%prefix% &#00F7DD%effect% &fhatás aktiválódott&f."
+  started-broadcast: "%prefix% &fA(z) &#00F7DD{arena_name} &faréna #00FF1Celkezdődött&f! #00FF1CHarcoljatok&f!"
+
+console:
+  arena:
+    missing-settings:
+      header: "&8[&bCocoFFA&8] &fNéhány beállítás &#FF0000nincs &fmegadva&f:"
+      header-with-arena: "&8[&bCocoFFA&8] &fNéhány beállítás &#FF0000nincs &fmegadva a &#00F7DD{arena_name} &farénához&f:"
+      item: "&8[&bCocoFFA&8] &f- &#00F7DD{missing}"
+      footer: "&8[&bCocoFFA&8] &fÁllítsd be ezeket az értékeket a &#00F7DD/ffa setup &fparanccsal&f!"
+      footer-with-command: "&8[&bCocoFFA&8] &fÁllítsd be ezeket az értékeket a &#00F7DD/{command} setup &fparanccsal&f!"
+
+update:
+  console: "%prefix% &fÚj verzió elérhető: &#00FF07%latest% &8(&fJelenlegi: &#FF0000%current%&8)"
+  player: "%prefix% &fÚj verzió elérhető: &#00FF07%latest% &8([link]&#00FF07Töltsd le innen[/link]&8)"
+  error: "%prefix% &fNem sikerült ellenőrizni a frissítéseket: &#FF0000%error%"
+
+# ne változtasd meg
+locale-version: 1

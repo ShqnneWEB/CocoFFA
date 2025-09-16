@@ -1,0 +1,12 @@
+/*
+ * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
+ */
+package hu.geri.libs.revxrsal.commands.stream.token;
+
+import org.jetbrains.annotations.ApiStatus;
+
+@ApiStatus.Internal
+@ApiStatus.NonExtendable
+public interface Token {
+}
+

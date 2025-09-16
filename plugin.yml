@@ -1,0 +1,58 @@
+name: CocoFFA
+version: '1.2'
+main: hu.geri.CocoFFA
+api-version: 1.18
+author: CocoStudios
+folia-supported: true
+
+libraries:
+  - com.zaxxer:HikariCP:5.0.1
+  - com.mysql:mysql-connector-j:8.0.33
+  - org.xerial:sqlite-jdbc:3.43.0.0
+  - club.minnced:discord-webhooks:0.8.4
+
+softdepend: [PlaceholderAPI]
+
+permissions:
+  cocoffa.player:
+    default: true
+  cocoffa.admin:
+    default: op
+  cocoffa.admin.givestarter:
+    default: op
+  cocoffa.admin.create:
+    default: op
+  cocoffa.admin.editor:
+    default: op
+  cocoffa.admin.delete:
+    default: op
+  cocoffa.admin.start:
+    default: op
+  cocoffa.admin.startrandom:
+    default: op
+  cocoffa.admin.stop:
+    default: op
+  cocoffa.admin.stopall:
+    default: op
+  cocoffa.admin.reload:
+    default: op
+  cocoffa.admin.list:
+    default: op
+  cocoffa.admin.resetwins:
+    default: op
+  cocoffa.admin.setup:
+    default: op
+  cocoffa.admin.spectate:
+    default: op
+  cocoffa.command.bypass:
+    default: op
+  cocoffa.iplimit.bypass:
+    default: op
+  cocoffa.itemdrop.bypass:
+    default: op
+  cocoffa.gamemode.bypass:
+    default: op
+  cocoffa.fly.bypass:
+    default: op
+  cocoffa.admin.update-notify:
+    default: op

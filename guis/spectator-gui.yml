@@ -1,0 +1,107 @@
+title: "&8         ᴘʟᴀʏᴇʀ ᴇᴅɪᴛᴏʀ"
+rows: 6
+
+open-sound: "UI_BUTTON_CLICK"
+
+player-item:
+  name: "&#FCFF00{player_name}"
+  lore:
+    - "&fArena: &#00F7DD{arena_name}"
+    - ""
+    - "&eLeft-Click &6» &fTeleport"
+
+player-slots:
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+
+navigation:
+  previous-page:
+    enabled: true
+    slot: 48
+    material: "ARROW"
+    name: "&#FCFF00Previous Page"
+    lore:
+      - " "
+      - "&fClick to go to the previous page"
+      - ""
+      - "&eLeft-Click &6» &fPrevoius Page"
+
+  next-page:
+    enabled: true
+    slot: 50
+    material: "ARROW"
+    name: "&#FCFF00Next Page"
+    lore:
+      - " "
+      - "&fClick to go to the next page"
+      - ""
+      - "&eLeft-Click &6» &fNext Page"
+
+  close:
+    enabled: true
+    slot: 49
+    material: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ=="
+    name: "&#FF0000Close Menu"
+    lore:
+      - " "
+      - "&fClick to close this menu"
+      - " "
+      - "&eLeft-Click &6» &fExit"
+
+filler:
+  material: "GRAY_STAINED_GLASS_PANE"
+  name: "&7"
+  lore: []
+  filler-slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 17
+    - 18
+    - 26
+    - 27
+    - 35
+    - 36
+    - 44
+    - 45
+    - 46
+    - 47
+    - 51
+    - 52
+    - 53
+
+# do not change
+gui-version: 1
